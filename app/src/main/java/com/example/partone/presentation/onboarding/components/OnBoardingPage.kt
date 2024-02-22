@@ -21,12 +21,13 @@ import androidx.compose.ui.unit.dp
 import com.example.partone.R
 import com.example.partone.presentation.onboarding.Dimens.MediumPadding1
 import com.example.partone.presentation.onboarding.Dimens.MediumPadding2
+import com.example.partone.presentation.onboarding.Dimens.SmallPadding1
 import com.example.partone.presentation.onboarding.Page
 import com.example.partone.presentation.onboarding.pages
 import com.example.partone.ui.theme.PartOneTheme
 
 @Composable
-fun OnBoarding(
+fun OnBoardingPage(
     modifier:Modifier = Modifier,
     page: Page
 ){
@@ -49,12 +50,15 @@ fun OnBoarding(
             color = colorResource(id = R.color.display_small)
         )
 
+        Spacer(modifier = Modifier.height(SmallPadding1))
+
         Text(
             text = page.description,
             modifier = Modifier.padding(horizontal = MediumPadding2),
             style = MaterialTheme.typography.bodyMedium,
             color = colorResource(id = R.color.text_medium)
         )
+
 
     }
 
@@ -65,6 +69,6 @@ fun OnBoarding(
 @Composable
 fun OnBoardingPageReview(){
     PartOneTheme {
-        OnBoarding(page = pages[0])
+        OnBoardingPage(page = pages[0])
     }
 }

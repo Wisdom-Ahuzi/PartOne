@@ -26,13 +26,7 @@ val pages = listOf(
         title = "Lorem ipsum dolor sit amet",
         description = "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisiate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         image = R.drawable.onboarding3
-    ),
-
-    Page(
-        title = "Lorem ipsum dolor sit amet",
-        description = "Ut enim ad minim veniam, quis e velit esse cillum d officia deserunt mollit anim id est laborum.",
-        image = R.drawable.onboarding1
-    ),
+    )
 
 )
 
