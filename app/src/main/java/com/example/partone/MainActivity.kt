@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,6 +19,7 @@ import androidx.core.view.WindowCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.lifecycleScope
 import com.example.partone.domain.usecases.AppEntryUseCases
+import com.example.partone.presentation.navgraph.NavGraph
 import com.example.partone.presentation.onboarding.OnBoardingScreen
 import com.example.partone.presentation.onboarding.OnBoardingViewModel
 import com.example.partone.ui.theme.PartOneTheme
@@ -28,24 +30,22 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    @Inject
-    lateinit var appEntryUseCases: AppEntryUseCases
+
+    val viewModel by viewModels<MainViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window,false)
-        installSplashScreen()
-        lifecycleScope.launch {
-            appEntryUseCases.readAppEntry().collect{
-                Log.d("Test", it.toString())
+        installSplashScreen().apply {
+            setKeepOnScreenCondition{
+                viewModel.splashCondition
             }
         }
+
         setContent {
             PartOneTheme {
                 Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)){
-                    val viewModel : OnBoardingViewModel = hiltViewModel()
-                    OnBoardingScreen(
-                        event = viewModel::onEvent
-                    )
+                    val startDestination = viewModel.startDestination
+                    NavGraph(startDestination = startDestination )
                 }
             }
         }

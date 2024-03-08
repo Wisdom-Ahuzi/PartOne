@@ -38,10 +38,7 @@ fun OnBoardingScreen(
     Column(modifier = Modifier.fillMaxSize()) {
 
         val pagerState = rememberPagerState(initialPage = 0)
-        //        Work needs to be done here
-//        {
-//            pages.size
-//        }
+
 
         val buttonState = remember{
             derivedStateOf {
