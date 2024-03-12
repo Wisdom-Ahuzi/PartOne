@@ -6,6 +6,9 @@ import com.example.partone.domain.manager.LocalUserManager
 import com.example.partone.domain.usecases.AppEntryUseCases
 import com.example.partone.domain.usecases.ReadAppEntry
 import com.example.partone.domain.usecases.SaveAppEntry
+import com.example.partone.firebaseAuth.data.AuthRepository
+import com.example.partone.firebaseAuth.data.AuthRepositoryImpl
+import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,4 +34,15 @@ object AppModule {
         readAppEntry = ReadAppEntry(localUserManager),
         saveAppEntry = SaveAppEntry(localUserManager)
     )
+
+
+    @Provides
+    @Singleton
+    fun providesFirebaseAuth( ) = FirebaseAuth.getInstance()
+
+    @Provides
+    @Singleton
+    fun providesRepositoryImpl(firebaseAuth: FirebaseAuth) : AuthRepository {
+        return AuthRepositoryImpl(firebaseAuth)
+    }
 }

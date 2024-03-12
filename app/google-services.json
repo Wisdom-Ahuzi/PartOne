@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1051099922431",
+    "project_id": "sonicize-23ac4",
+    "storage_bucket": "sonicize-23ac4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051099922431:android:c9eadb65601a0ead16b1ca",
+        "android_client_info": {
+          "package_name": "com.example.partone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZySyzU0bQ4ufUpngYg-Go-aud4ZsRvcM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051099922431:android:d2368339433d448d16b1ca",
+        "android_client_info": {
+          "package_name": "com.example.parttwo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZySyzU0bQ4ufUpngYg-Go-aud4ZsRvcM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
