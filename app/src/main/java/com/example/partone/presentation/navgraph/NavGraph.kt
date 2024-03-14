@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
+import com.example.partone.presentation.AuthenticationNavigator.AuthenticationNavigator
 import com.example.partone.presentation.onboarding.OnBoardingScreen
 import com.example.partone.presentation.onboarding.OnBoardingViewModel
 import com.example.partone.presentation.soundNavigator.SoundNavigator
@@ -31,6 +32,19 @@ fun NavGraph(
                 OnBoardingScreen(
                     event = viewModel::onEvent
                 )
+            }
+        }
+
+
+
+        navigation(
+            route = Routes.AuthenticationNavigation.route,
+            startDestination = Routes.AuthenticationNavigatorScreen.route
+        ){
+            composable(
+                route = Routes.AuthenticationNavigatorScreen.route
+            ){
+                AuthenticationNavigator()
             }
         }
 

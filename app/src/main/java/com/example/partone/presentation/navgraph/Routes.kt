@@ -13,4 +13,8 @@ sealed class Routes(
     object SoundNavigation : Routes( route = "soundNavigation")
     object SoundNavigatorScreen : Routes(route =  "soundNavigator")
 
+    object AuthenticationNavigation : Routes( route = "authenticationNavigation")
+
+    object AuthenticationNavigatorScreen : Routes(route = "authenticationAuthenticator")
+
 }

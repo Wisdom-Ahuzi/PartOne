@@ -52,13 +52,16 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.example.partone.R
+import com.example.partone.presentation.navgraph.Routes
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnrememberedMutableState")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignupScreen(
+    navController : NavController,
     viewModel: SignupViewModel = hiltViewModel()
 ) {
 
@@ -200,7 +203,9 @@ fun SignupScreen(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.Center
                     ) {
-                        TextButton( onClick = { /*TODO*/ }) {
+                        TextButton( onClick = {
+                            navController.navigate(Routes.LoginScreen.route)
+                        }) {
                             Text(
                                 text = "Already have an account? Log in",
                                 style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold),
@@ -217,6 +222,7 @@ fun SignupScreen(
                             if (state.value?.isSuccess?.isNotEmpty() == true){
                                 val success = state.value?.isSuccess
                                 Toast.makeText(context,"$success" , Toast.LENGTH_SHORT).show()
+           //                     navController.navigate(Routes.SoundNavigatorScreen.route)
                             }
                         }
                     }

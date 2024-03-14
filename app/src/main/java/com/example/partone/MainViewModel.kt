@@ -29,7 +29,7 @@ class MainViewModel @Inject constructor(
     init {
         appEntryUseCases.readAppEntry().onEach {shouldStartFromHomeScreen ->
             startDestination = if(shouldStartFromHomeScreen){
-                Routes.SoundNavigation.route
+                Routes.AuthenticationNavigation.route
             }else{
                 Routes.AppStartNavigation.route
             }

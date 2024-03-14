@@ -1,6 +1,8 @@
 package com.example.partone.presentation.login
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -53,13 +55,17 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.example.partone.R
+import com.example.partone.presentation.navgraph.Routes
+import com.example.partone.presentation.soundNavigator.SoundNavigator
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnrememberedMutableState")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(
+    navController: NavController,
     viewModel:LoginViewModel = hiltViewModel()
 ) {
 
@@ -176,6 +182,7 @@ fun LoginScreen(
                             scope.launch {
                                 viewModel.loginUser(email, password )
                             }
+
                         }
                     ) {
                         Text(
@@ -202,7 +209,10 @@ fun LoginScreen(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        TextButton( onClick = { /*TODO*/ }) {
+                        TextButton( onClick = {
+                            navController.navigate(Routes.SignUpScreen.route)
+
+                        }) {
                             Text(
                                 text = "Sign up",
                                 style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold),
@@ -226,6 +236,7 @@ fun LoginScreen(
                             if (state.value?.isSuccess?.isNotEmpty() == true){
                                 val success = state.value?.isSuccess
                                 Toast.makeText(context,"$success" , Toast.LENGTH_SHORT).show()
+                                navController.navigate(Routes.SoundNavigatorScreen.route)
                             }
                         }
                     }
