@@ -3,6 +3,7 @@ package com.example.partone.presentation.login
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -59,7 +60,12 @@ import androidx.navigation.NavController
 import com.example.partone.R
 import com.example.partone.presentation.navgraph.Routes
 import com.example.partone.presentation.soundNavigator.SoundNavigator
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
+
+
 
 @SuppressLint("UnrememberedMutableState")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -68,6 +74,15 @@ fun LoginScreen(
     navController: NavController,
     viewModel:LoginViewModel = hiltViewModel()
 ) {
+
+
+//    val user = Firebase.auth.currentUser
+//    if (user != null) {
+//        navController.navigate(Routes.SoundNavigatorScreen.route)
+//        // User is signed in
+//    }
+
+
 
     var email by remember {
         mutableStateOf("")
@@ -246,6 +261,7 @@ fun LoginScreen(
                             if (state.value?.isError?.isNotEmpty() == true){
                                 val error = state.value?.isError
                                 Toast.makeText(context,"$error" , Toast.LENGTH_SHORT).show()
+                                Log.d("Login Error", "$error")
                             }
                         }
                     }

@@ -13,6 +13,8 @@ import com.example.partone.presentation.AuthenticationNavigator.AuthenticationNa
 import com.example.partone.presentation.onboarding.OnBoardingScreen
 import com.example.partone.presentation.onboarding.OnBoardingViewModel
 import com.example.partone.presentation.soundNavigator.SoundNavigator
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 @Composable
 fun NavGraph(
@@ -44,6 +46,7 @@ fun NavGraph(
             composable(
                 route = Routes.AuthenticationNavigatorScreen.route
             ){
+
                 AuthenticationNavigator()
             }
         }

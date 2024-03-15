@@ -55,7 +55,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.partone.R
 import com.example.partone.presentation.navgraph.Routes
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
+
+
 
 @SuppressLint("UnrememberedMutableState")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -64,6 +69,14 @@ fun SignupScreen(
     navController : NavController,
     viewModel: SignupViewModel = hiltViewModel()
 ) {
+
+
+//    val user = Firebase.auth.currentUser
+//    if (user != null) {
+//        navController.navigate(Routes.SoundNavigatorScreen.route)
+//        // User is signed in
+//    }
+
 
     var email by remember {
         mutableStateOf("")
@@ -222,7 +235,7 @@ fun SignupScreen(
                             if (state.value?.isSuccess?.isNotEmpty() == true){
                                 val success = state.value?.isSuccess
                                 Toast.makeText(context,"$success" , Toast.LENGTH_SHORT).show()
-           //                     navController.navigate(Routes.SoundNavigatorScreen.route)
+                                navController.navigate(Routes.SoundNavigatorScreen.route)
                             }
                         }
                     }

@@ -13,11 +13,22 @@ import com.example.partone.presentation.navgraph.Routes
 import com.example.partone.presentation.profile.ProfileScreen
 import com.example.partone.presentation.signup.SignupScreen
 import com.example.partone.presentation.signup.SignupViewModel
+import com.example.partone.presentation.soundNavigator.SoundNavigator
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 @Composable
 fun AuthenticationNavigator(){
 
     val navController = rememberNavController()
+
+
+//    val user = Firebase.auth.currentUser
+//    if (user != null) {
+//        navController.navigate(Routes.SoundNavigatorScreen.route)
+//        // User is signed in
+//    }
 
 
     NavHost(
@@ -29,6 +40,10 @@ fun AuthenticationNavigator(){
         }
         composable(route = Routes.LoginScreen.route){
             LoginScreen(navController)
+        }
+
+        composable(route = Routes.SoundNavigatorScreen.route){
+            SoundNavigator()
         }
 
     }
